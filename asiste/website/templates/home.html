@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load  static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block content %}
+
+    <h6>Hola mundo</h6>
+
+    {% if user.is_authenticated %}
+
+    <h1>Recods...</h1>
+
+    <table class="table table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">ZipCode</th>
+          <th scope="col">Create_at</th>
+          <th scope="col">id</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% if aprendices %}
+      {% for aprendiz in aprendices %}
+
+          {{ aprendiz.documento_aprendiz }}
+{#      <tr>#}
+{#        <td>{{ record.first_name }} {{ record.last_name }}</td>#}
+{#        <td>{{ record.email }}</td>#}
+{#        <td>{{ record.phone }}</td>#}
+{#        <td>{{ record.address }}</td>#}
+{#        <td>{{ record.city }}</td>#}
+{#        <td>{{ record.state }}</td>#}
+{#        <td>{{ record.zipcode }}</td>#}
+{#        <td>{{ record.create_at }}</td>#}
+        <td><a href="{% url 'aprendiz' aprendiz.documento_aprendiz %}">j</a></td>
+{#      </tr>#}
+      {% endfor %}  
+      {% endif %}
+      {% else %}
+      </tbody>
+    </table>
+
+    <h1>Ingreso de usuarios registrados</h1>
+
+    <form method="POST" action="{% url 'home' %}">
+      {% csrf_token  %}
+        <div class="mb-3">
+          <input type="number" class="form-control" name="username" placeholder="Documento de identidad" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+        </div>
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+  {% endif %}
+{% endblock %}
