@@ -1,0 +1,153 @@
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body .alert {
+  font-size: 1.3rem;
+  border-radius: 0;
+  margin: 0;
+  width: 100%;
+}
+body .contenedor {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body footer {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  height: 6rem;
+  width: 99vw;
+  background-color: #39A900;
+}
+body footer .copyright {
+  width: 50vw;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+}
+body footer img {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 10rem;
+}
+
+.card {
+  box-shadow: 0 0 2px #00324D;
+  max-height: 90vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .formulario .card-body {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card .formulario .card-body form input {
+  transition: 0.5s;
+}
+.card .formulario .card-body form input:hover {
+  border: 1px solid #39A900;
+  box-shadow: 0 0 3px #39A900;
+}
+.card .formulario .card-body form input:focus {
+  border: 1px solid #39A900;
+  box-shadow: 0 0 3px #39A900;
+}
+.card .formulario .card-body form input::placeholder {
+  color: darkgrey;
+}
+.card .formulario .card-body form div p {
+  font-size: 0.8rem;
+  color: darkgrey;
+}
+.card .formulario .card-body form a {
+  text-decoration: none;
+  color: #39A900;
+}
+.card .formulario .card-body form .foot {
+  margin: 0.3rem 0;
+  text-align: end;
+}
+.card .formulario .card-body form .foot a {
+  color: #00324D;
+}
+.card .formulario h1 {
+  font-size: 1.7rem;
+  text-align: center;
+  opacity: 0.4;
+}
+.card .formulario .imagenes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.card .formulario .imagenes .asiste {
+  cursor: pointer;
+  width: 15rem;
+}
+.card .formulario .imagenes .sena {
+  cursor: pointer;
+  width: 6rem;
+}
+.card .formulario form .botones {
+  display: flex;
+  justify-content: space-between;
+}
+.card .formulario form .botones .boton-1 {
+  width: 10rem;
+  background-color: #39A900;
+  border: 2px solid #39A900;
+  transition: 0.5s;
+}
+.card .formulario form .botones .boton-1:hover {
+  color: #39A900;
+  background-color: transparent;
+  transform: translateY(-3px);
+}
+.card .formulario form .botones .boton-2 {
+  width: 10rem;
+  color: #00324D;
+  background-color: transparent;
+  border: 1px solid #00324D;
+  transition: 0.5s;
+}
+.card .formulario form .botones .boton-2:hover {
+  color: white;
+  background-color: #00324D;
+  transform: translateY(-3px);
+}
+
+.card img {
+  cursor: pointer;
+  width: 30rem;
+}
+
+@media (max-width: 414px) {
+  body .contenedor .card .imagenes .img-1 {
+    width: 13rem;
+  }
+  body .contenedor .card .imagenes .img-2 {
+    width: 4rem;
+  }
+  body .copyright {
+    height: 3rem;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

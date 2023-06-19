@@ -8,6 +8,9 @@ from .models import Aprendiz
 def landing(request):
     return render(request, 'landing_page.html', {})
 
+def olvido_pass(request):
+    return render(request, 'olvido_su_pass.html', {})
+
 def home(request):
   aprendices = Aprendiz.objects.all()
   # Check to see if loggin in

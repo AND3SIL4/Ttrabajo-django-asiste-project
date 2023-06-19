@@ -7,10 +7,15 @@ from .models import Aprendiz
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="",widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Correo electronico'}))
     dependencia = forms.CharField(label="", max_length=45,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dependencia'}), disabled="True", initial="Teleinformática")
+    rol_choices = [
+    ('1', 'Administrador'),
+    ('2', 'Instructor'),
+    ('3', 'Aprendiz')]
+    rol = forms.ChoiceField(label="", choices=rol_choices,widget=forms.Select(attrs={'class':'form-control'}))
 
     class Meta:
         model = User
-        fields = ('username', 'dependencia', 'email', 'password1', 'password2')
+        fields = ('username', 'dependencia','rol', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -18,17 +23,17 @@ class SignUpForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['placeholder'] = 'Documento de identidad'
         self.fields['username'].label = ''
-        self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
+        self.fields['username'].help_text = '<span class="form-text text-muted"><small>Ingrese su documento de identidad sin letras ni caracteres especiales</small></span>'
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Contraseña'
         self.fields['password1'].label = ''
-        self.fields['password1'].help_text = '<ul class="form-text text-muted small"><li>Your password can\'t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can\'t be a commonly used password.</li><li>Your password can\'t be entirely numeric.</li></ul>'
+        self.fields['password1'].help_text = '<ul class="form-text text-muted small"><li>Su contraseña no puede ser muy similar a su otra información personal.</li><li>Su contraseña debe contener al menos 8 caracteres.</li><li>Su contraseña no puede ser una contraseña de uso común.</li><li>Su contraseña no puede ser completamente numérica.</li></ul>'
 
         self.fields['password2'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirme su contraseña'
         self.fields['password2'].label = ''
-        self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
+        self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Ingrese la misma contraseña que antes, para verificación.</small></span>'
 
 # Create Add Record Form
 class AddRecordForm(forms.ModelForm):
