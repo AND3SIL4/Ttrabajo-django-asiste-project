@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../static/css/styles.css">
 </head>
 <body>
+  <!-- Incluir mensajes de guia -->
   {% if messages %}
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,9 +22,11 @@
       {% endfor %}
     {% endif %}
   {% block content %}
+  <!-- Logica de inicio de sesion -->
   {% if user.is_authenticated %}
+  <!-- Incluir navegacion -->
+  {% include 'navbar.html'  %}
   <h1>Recods...</h1>
-  <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
   <table class="table table-hover">
   <thead class="table-dark">
   <tr>
