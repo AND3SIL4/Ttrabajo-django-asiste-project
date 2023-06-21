@@ -1,5 +1,6 @@
 <style>
   ul{
+    margin-left: 5rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -50,11 +51,12 @@
   }
 </style>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" style="position: fixed; background-color: white; z-index: 9999; width: 100%;">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'landing' %}"><img src="../../static/img/_logo_asiste_horizontal.png" alt="logo asiste" style="width: 15rem;"></a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Navbar de usuario loggeado -->
         {% if user.is_authenticated %}
         <li class="nav-item">
           <i class="item bi bi-house-door-fill"></i>
@@ -83,12 +85,32 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li class="menus"><a class="dropdown-item" href="{% url 'admin' %}">Configuraciones</a></li>
-            <li class="menus"><a class="dropdown-item" href="#">Actualizar datos</a></li>
+            <li class="menus"><a class="dropdown-item" href="{% url 'perfil'  %}">Actualizar datos</a></li>
             <li class="menus"><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesion</a></li>
           </ul>
           </div>
         </li>
+        <!-- Navbar de usuario no loggeado -->
         {% else %}
+        <li class="nav-item">
+          <form role="search" style="display: flex; align-items: center; margin: 0;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" style="width: 10rem;" type="submit">Search</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Nosotros </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ayuda y soporte</a>
+        </li>
+        <li class="nav-item" >
+            <a href="{% url 'home' %}" class="btn" style="width: 10rem;">
+              <button type="button" class="btn" style="width: 10rem;">
+              Iniciar sesión
+              </button>
+            </a>
+        </li>
         {% endif %}
       </ul>
     </div>

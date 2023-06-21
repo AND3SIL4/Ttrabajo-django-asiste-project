@@ -12,6 +12,9 @@ def administrador(request):
 def landing(request):
     return render(request, 'index.html', {})
 
+def perfil(request):
+    return render(request, 'public/perfil.html', {})
+
 def olvido_pass(request):
     return render(request, 'public/olvido_su_pass.html', {})
 
