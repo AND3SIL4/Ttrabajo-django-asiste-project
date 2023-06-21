@@ -1,0 +1,110 @@
+<style>
+  ul{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  li{
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border: 3px solid transparent;
+  }
+  li:hover .item {
+    color: #39A900 ;
+  }
+  li:hover {
+    border-bottom: 3px solid #39A900;
+  }
+  button{
+    font-size: 1.3rem !important;
+    width: 4rem;
+    height: 3rem;
+    border: #39A900 !important;
+    color: white !important;
+    background-color: #39A900 !important;
+  }
+  .boton:hover{
+    border-bottom: 3px solid transparent;
+  }
+  .menus{
+    padding: 2px;
+  }
+  .menus:hover{
+    color: white;
+    background-color: #39A900;
+  }
+  .menus:hover a{
+    color: white;
+  }
+  .dropdown-item{
+    font-size: 1rem;
+  }
+  .dropdown-item:hover{
+    background-color: #39A900;
+    color: white;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'landing' %}"><img src="../../static/img/_logo_asiste_horizontal.png" alt="logo asiste" style="width: 15rem;"></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <i class="item bi bi-house-door-fill"></i>
+          <a class="item nav-link" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <i class="item bi bi-pen-fill"></i>
+          <a class="item nav-link" href="#">Registro de novedad</a>
+        </li>
+        <li class="nav-item">
+          <i class="item bi bi-person-fill-check"></i>
+          <a class="item nav-link" href="#">Asistencia</a>
+        </li>
+        <li class="nav-item">
+          <i class="item bi bi-chat-dots-fill"></i>
+          <a class="item nav-link" href="#">Notificaciones</a>
+        </li>
+        <li class="nav-item">
+          <i class="item bi bi-info-circle-fill"></i>
+          <a class="item nav-link" href="#">Información</a>
+        </li>
+        <li class="nav-item boton">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <i class="bi bi-gear-fill"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="menus"><a class="dropdown-item" href="{% url 'admin' %}">Configuraciones</a></li>
+            <li class="menus"><a class="dropdown-item" href="#">Actualizar datos</a></li>
+            <li class="menus"><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesion</a></li>
+          </ul>
+          </div>
+        </li>
+        {% else %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_record' %}">Add record</a>
+        </li> -->
+
+          <!-- <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Iniciar sesión</a>
+        </li> -->

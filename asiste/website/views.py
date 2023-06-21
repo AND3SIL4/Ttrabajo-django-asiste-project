@@ -5,11 +5,15 @@ from .forms import SignUpForm, AddRecordForm
 from .models import Aprendiz
 
 # Create your views here.
+def administrador(request):
+    messages.success(request, "Bienvenido a la interfaz de administrador...")
+    return redirect('admin:index')
+
 def landing(request):
-    return render(request, 'landing_page.html', {})
+    return render(request, 'index.html', {})
 
 def olvido_pass(request):
-    return render(request, 'olvido_su_pass.html', {})
+    return render(request, 'public/olvido_su_pass.html', {})
 
 def home(request):
   aprendices = Aprendiz.objects.all()
@@ -27,7 +31,7 @@ def home(request):
           messages.success(request, "Usuario no valido para ingresar")
           return redirect('home')
   else:
-      return render(request, 'home.html', {'aprendices': aprendices})
+      return render(request, 'public/home.html', {'aprendices': aprendices })
 
 def logout_user(request):
     logout(request)
@@ -48,14 +52,14 @@ def register_user(request):
       return redirect('home')
   else:
     form = SignUpForm()
-    return render(request, 'register.html', {'form':form})
-  return render(request, 'register.html', {'form':form})
+    return render(request, 'public/register.html', {'form':form})
+  return render(request, 'public/register.html', {'form':form})
 
 def aprendiz_view(request, pk):
   if request.user.is_authenticated:
     # look up records
     view = Aprendiz.objects.get(documento_aprendiz=pk)
-    return render(request, 'aprendiz.html', {'aprendiz_view': view})
+    return render(request, 'public/aprendiz.html', {'aprendiz_view': view})
   else:
     messages.success(request, "No puedes acceder a la informacion")
     return redirect('home')
@@ -78,7 +82,7 @@ def add_record(request):
 				add_record = form.save()
 				messages.success(request, "Registro creado con exito...")
 				return redirect('home')
-		return render(request, 'add_record.html', {'form':form})
+		return render(request, 'public/add_record.html', {'form':form})
 	else:
 		messages.success(request, "No puedes hacer registros...")
 		return redirect('home')
@@ -91,7 +95,7 @@ def update_record(request, pk):
           form.save()
           messages.success(request, "Yup....")
           return redirect('home')
-      return render(request, 'update_record.html', {'form':form})
+      return render(request, 'public/update_record.html', {'form':form})
   else:
     messages.success(request, "You Must Be Logged In...")
     return redirect('home')
